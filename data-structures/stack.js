@@ -49,31 +49,129 @@ What's the time complexity?
 
 
  */
-
+/*
 function Stack(capacity) {
   // implement me...
+  this.storage = '';
+
 }
 
 Stack.prototype.push = function(value) {
   // implement me...
+  this.storage += 'ø';
+  this.storage += value;
 };
 // Time complexity:
 
 Stack.prototype.pop = function() {
   // implement me...
+  let str = this.storage.substring(this.storage.lastIndexOf('ø')+1,this.storage.length);
+  this.storage = this.storage.substring(0,this.storage.lastIndexOf('ø'));
+  return str;
+
 };
 // Time complexity:
 
 Stack.prototype.peek = function() {
   // implement me...
+  let answer = '';
+  let i = 1;
+  let count = 0;
+  while (count !== 1) {
+    if (this.storage[i]===('ø')){
+      return answer;
+    }
+    answer += this.storage[i];
+    i++;
+  }
+  return answer;
 };
 // Time complexity:
 
 Stack.prototype.count = function() {
   // implement me...
+    let count = 0;
+    for ( let key in this.storage) {
+      count += (this.storage[key] === 'ø') ? 1 : 0;
+    }
+    return count;
 };
 // Time complexity:
+let myStack = new Stack;
+myStack.push(10);
+myStack.push(20);
+myStack.push(30);
+myStack.push(40);
+myStack.push(50);
+console.info(myStack.pop());
+console.info(myStack.count());
+console.info(myStack.peek());
+console.log(myStack);
 
+
+*/
+//there's this code the teacher did with infinity 
+/*
+this._capacity = capacity || infinity;
+and then any of the pushes would use it.
+*/
+let Stack = function() {
+  this.storage = {};
+  this.count = 0; //the teacher underscored all the properties? why? this._count
+}
+
+Stack.prototype.push = function(value) {
+  
+  // this.storage[Object.keys(this.storage).length.toString()] = value; 
+  // i messed up by using keys. i cant use the array that Object keys makes.
+  this.storage[this.count] = value;
+  this.count++;
+  //this is the teacher version.  is the O(N) better than mine?
+  
+}
+
+Stack.prototype.pop = function() {
+  //i suppose a try catch would take any count less than zero and throw an error.
+  let value = this.storage[--this.count];
+  delete this.storage[this.count];
+  return value;
+}
+
+Stack.prototype.peek = function() {
+  let value = this.storage[this.count-1];
+  return value;
+}
+
+Stack.prototype.count = function() {
+  return this.count; 
+}
+
+Stack.prototype.sort = function() {
+  for (let i = 0; i < this.count; ++i) {
+
+    for (let key in this.storage) {
+      // let a = this.storage[key]; // you can't assing variables like this or it doesnt work. this actually assigns values.
+      // let b = this.storage[(Number(key)+1)];
+      // console.log(this.storage[(Number(key)+1)]);
+      if (this.storage[key] < this.storage[Number(key)+1]) {
+        [ this.storage[key],this.storage[Number(key)+1] ] = [ this.storage[Number(key)+1], this.storage[key] ];
+      }
+    }
+  }
+  return this.storage;
+}
+  let Stackhouse = new Stack;
+  
+
+Stackhouse.push(10);
+Stackhouse.push(20);
+Stackhouse.push(30);
+Stackhouse.push(40);
+console.log(Stackhouse.count);
+console.log(Stackhouse.peek());
+// console.info(Stackhouse.pop());
+console.log(Stackhouse);
+console.log(Stackhouse.sort());
 
 /*
 *** Exercises:
