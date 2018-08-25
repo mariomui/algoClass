@@ -146,6 +146,15 @@ Stack.prototype.count = function() {
   return this.count; 
 }
 
+//exercise1
+// 1. Implement a stack with a min method which returns the minimum element currently in the stack. This method should have O(1) time complexity. Make sure your implementation handles duplicates.
+Stack.prototype.minStack = function() {
+  
+}
+
+//exercise 2
+//2. Sort a stack so that its elements are in ascending order.
+
 Stack.prototype.sort = function() {
   for (let i = 0; i < this.count; ++i) {
 
@@ -153,7 +162,7 @@ Stack.prototype.sort = function() {
       // let a = this.storage[key]; // you can't assing variables like this or it doesnt work. this actually assigns values.
       // let b = this.storage[(Number(key)+1)];
       // console.log(this.storage[(Number(key)+1)]);
-      if (this.storage[key] < this.storage[Number(key)+1]) {
+      if (this.storage[key] > this.storage[Number(key)+1]) {
         [ this.storage[key],this.storage[Number(key)+1] ] = [ this.storage[Number(key)+1], this.storage[key] ];
       }
     }
@@ -161,11 +170,13 @@ Stack.prototype.sort = function() {
   return this.storage;
 }
   let Stackhouse = new Stack;
-  
 
-Stackhouse.push(10);
+Stackhouse.push(40);
 Stackhouse.push(20);
-Stackhouse.push(30);
+Stackhouse.push(10);
+Stackhouse.push(10);
+Stackhouse.push(15);
+Stackhouse.push(10);
 Stackhouse.push(40);
 console.log(Stackhouse.count);
 console.log(Stackhouse.peek());
