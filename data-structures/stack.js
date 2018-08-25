@@ -184,6 +184,13 @@ console.log(Stackhouse.peek());
 console.log(Stackhouse);
 console.log(Stackhouse.sort());
 
+
+let MinStack = function(capacity) {
+  this._storage = {};
+  this._count = 0;
+  this.MinStack = new Stack;
+}
+
 /*
 *** Exercises:
 
