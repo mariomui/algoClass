@@ -171,25 +171,64 @@ Stack.prototype.sort = function() {
 }
   let Stackhouse = new Stack;
 
-Stackhouse.push(40);
-Stackhouse.push(20);
-Stackhouse.push(10);
-Stackhouse.push(10);
-Stackhouse.push(15);
-Stackhouse.push(10);
-Stackhouse.push(40);
-console.log(Stackhouse.count);
-console.log(Stackhouse.peek());
-// console.info(Stackhouse.pop());
-console.log(Stackhouse);
-console.log(Stackhouse.sort());
+// Stackhouse.push(40);
+// Stackhouse.push(20);
+// Stackhouse.push(10);
+// Stackhouse.push(10);
+// Stackhouse.push(15);
+// Stackhouse.push(10);
+// Stackhouse.push(40);
+// console.log(Stackhouse.count);
+// console.log(Stackhouse.peek());
+// // console.info(Stackhouse.pop());
+// console.log(Stackhouse);
+// console.log(Stackhouse.sort());
 
 
-let MinStack = function(capacity) {
+let MinStack = function(capacity=100) {
+  this._capacity = capacity;
   this._storage = {};
   this._count = 0;
-  this.MinStack = new Stack;
+  this._min = new Stack;
 }
+
+//if i push something, i compare it to the value in min. if it's less, i store it.
+MinStack.prototype.push = function(value) {
+  if (this._count < this._capacity) {
+
+    this._storage[this._count] = value;
+    if (value < this._min.this.storage[0]) {
+      this._min.this.storage[0] = value;
+    } else if (value === this._min.this.storage[0]) {
+      this._min.push(value);
+    } 
+    ++this._count;
+
+  }
+}
+//making this O(1) is super complicated.
+//require more studying on O(1) nested ifs.
+MinStack.prototype.pop = function() {
+  if (this._storage[this._count] === this._min.this.storage[this.count]) {
+      this._min.pop();
+  }
+  let value = this._storage[this._count];
+  //if the amount last popped into min stack is equal to the amount that _min is storing.
+  delete this._storage[this._count];
+  --this._count;
+  return value;
+}
+
+MinStack.prototype.min = function() {
+  return this._min.this.storage[this.count];
+}
+
+let minnyStack = new MinStack;
+minnyStack.push[Math.random()*10];
+minnyStack.push[Math.random()*10];
+minnyStack.push[Math.random()*10];
+console.log(minnyStack);
+console.log(minnyStack.min());
 
 /*
 *** Exercises:
