@@ -29,3 +29,40 @@ now repeat for next unsorted element
 (https://en.wikipedia.org/wiki/Shellsort)
 
 */
+
+var insertionSort = function (arr) {
+  //create bookmark as sortedIdx === 0
+  var bookmark = 0;
+  //loop through o1ur array.:M === 1
+  for (var i = bookmark; i < arr.length; i++) {
+    //loop through our array until +sortedIdx: N
+    const currElem = arr[i];
+    for (var j = 0; j < bookmark; j++) {
+      debugger;
+      var innerElem = arr[j];
+      //if value@M < value@N insert before
+      if (currElem < innerElem) {
+        var temp = arr.splice(i, 1);
+        arr.splice(j, 0, ...temp);
+        // bookmark++;
+        //1 2 | 3 4 5 m=== 2 n=0 n =1 so push to n=2 next loop m ===3
+        // 1 2 3 | 4 5 m === 3 n=0
+        break;
+      }
+      // +sortedIdx increment
+      //N should be incremented too
+    }
+    bookmark++;
+  }
+  return arr;
+  //if value@M > value@N insert after
+  //+sortedIdx is incremented
+  //N should be incrmeented as well
+  //stop looping when M === arr.length
+  //a, b, c, d.
+  //[] is unsorted, abcd is sorted
+  //a > unsorted[i], end loop
+};
+
+var jack = insertionSort([1, 3, 1, 2]);
+console.log(jack);

@@ -44,3 +44,11 @@ describe('minstack', () => {
     expect(minClone.getmin()).toEqual(1);
   });
 });
+
+describe('insertion in place', () => {
+  it('insertion', () => {
+    var arr = [3, 5, 8, 10, 2, 1];
+    var jack = insertionSort(arr);
+    expect(JSON.stringify(jack)).toBe(JSON.stringify(arr.sort((a, b) => a - b)));
+  });
+});
